@@ -1,6 +1,7 @@
 package com.github.codeinghelper.annotation.validator;
 
-import com.github.lizeze.util.StringUtil;
+
+import com.github.codeinghelper.util.StringUtil;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;

@@ -8,7 +8,7 @@
 package com.github.codeinghelper.exception;
 
 
-import com.github.lizeze.exception.http.HttpException;
+import com.github.codeinghelper.exception.http.HttpException;
 
 public class UpdateSuccess extends HttpException {
     public UpdateSuccess(int code){

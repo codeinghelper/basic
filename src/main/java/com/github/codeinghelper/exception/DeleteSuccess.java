@@ -8,7 +8,7 @@
 package com.github.codeinghelper.exception;
 
 
-import com.github.lizeze.exception.http.HttpException;
+import com.github.codeinghelper.exception.http.HttpException;
 
 public class DeleteSuccess extends HttpException {
     public DeleteSuccess(int code){
