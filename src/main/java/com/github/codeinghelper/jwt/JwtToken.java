@@ -1,14 +1,13 @@
 package com.github.codeinghelper.jwt;
-
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.auth0.jwt.interfaces.JWTVerifier;
+import com.github.codeinghelper.exception.http.ServerErrorException;
 import com.github.codeinghelper.util.DateUtil;
-import org.springframework.beans.factory.annotation.Value;
-
+import com.github.codeinghelper.util.StringUtil;
 import java.util.*;
 
 /**
@@ -19,8 +18,6 @@ import java.util.*;
  * @modified By：
  */
 public class JwtToken {
-
-
     public static Optional<Map<String, Claim>> getClaims(String token, String jwtKey) {
         DecodedJWT decodedJWT;
         Algorithm algorithm = Algorithm.HMAC256(jwtKey);
@@ -32,7 +29,6 @@ public class JwtToken {
         }
         return Optional.of(decodedJWT.getClaims());
     }
-
     public static Boolean verifyToken(String token, String jwtKey) {
         try {
             Algorithm algorithm = Algorithm.HMAC256(jwtKey);
@@ -46,14 +42,14 @@ public class JwtToken {
 
 
     public static String makeToken(String sessionId, String jwtKey, Integer expiredTimeIn) {
+        if (StringUtil.isEmptyOrNull(sessionId) || StringUtil.isEmptyOrNull(jwtKey))
+            throw new ServerErrorException(40002);
         return JwtToken.getToken(sessionId, jwtKey, expiredTimeIn);
     }
 
 
     private static String getToken(String sessionId, String jwtKey, Integer expiredTimeIn) {
         Algorithm algorithm = Algorithm.HMAC256(jwtKey);
-
-
         return JWT.create()
                 .withClaim("sessionId", sessionId)
                 .withExpiresAt(DateUtil.addSeconds(expiredTimeIn))
