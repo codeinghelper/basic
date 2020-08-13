@@ -1,5 +1,4 @@
 package com.github.codeinghelper.auth;
-
 import com.github.codeinghelper.exception.http.ForbiddenException;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -7,13 +6,9 @@ import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
-
-import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
 import java.util.Map;
 
 /**
@@ -42,22 +37,8 @@ public class ActionRightvalidator {
      */
     @Before("permission()&&@annotation(actionRight)")
     public void doBefore(JoinPoint joinPoint, ActionRight actionRight) {
-        System.out.println("================== step 2: before ==================");
-        System.out.println("******拦截前的逻辑******");
-        System.out.println("目标方法名为:" + joinPoint.getSignature().getName());
-        System.out.println("目标方法所属类的简单类名:" + joinPoint.getSignature().getDeclaringType().getSimpleName());
-        System.out.println("目标方法所属类的类名:" + joinPoint.getSignature().getDeclaringTypeName());
-        System.out.println("目标方法声明类型:" + Modifier.toString(joinPoint.getSignature().getModifiers()));
-        //获取传入目标方法的参数
-        Object[] args = joinPoint.getArgs();
-        for (int i = 0; i < args.length; i++) {
-            System.out.println("第" + (i + 1) + "个参数为:" + args[i]);
-        }
-        System.out.println("被代理的对象:" + joinPoint.getTarget());
-        System.out.println("代理对象自己:" + joinPoint.getThis());
 
-        System.out.println("拦截的注解的参数：");
-        System.out.println(actionRight.actionCode());
+
     }
 
     /**
@@ -65,7 +46,7 @@ public class ActionRightvalidator {
      */
     @After("permission()")
     public void doAfter() {
-        System.out.println("================== step 4: after ==================");
+
     }
 
     /**
@@ -75,7 +56,7 @@ public class ActionRightvalidator {
      */
     @Around("permission()")
     public Object doAround(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
-        System.out.println("================== step 1: around ==================");
+
         long startTime = System.currentTimeMillis();
         /*
          * 获取当前http请求中的token
@@ -85,11 +66,7 @@ public class ActionRightvalidator {
          * 3、token是否已过期（解析信息或者redis中是否存在）
          * */
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-        HttpServletRequest request = attributes.getRequest();
-        String token = request.getHeader("token");
-        if (StringUtils.isEmpty(token)) {
-            throw new ForbiddenException(4003);
-        }
+
         Map<String, String> map = rightManager.ActionRights();
         // 校验token的业务逻辑
         // ...
@@ -105,14 +82,13 @@ public class ActionRightvalidator {
         String value = visitPermission.actionCode();
         Boolean require = visitPermission.require();
         if (require) {
-            if (!map.containsKey(value)) throw new ForbiddenException(4003);
+            if (!map.containsKey(value)) throw new ForbiddenException(40003);
         }
         // 校验权限的业务逻辑
         // List<Object> permissions = redis.get(permission)
         // db.getPermission
         // permissions.contains(value)
         // ...
-        System.out.println(value);
 
         // 执行具体方法
         Object result = proceedingJoinPoint.proceed();

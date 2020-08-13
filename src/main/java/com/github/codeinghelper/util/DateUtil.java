@@ -383,4 +383,12 @@ public class DateUtil {
         calendar.add(Calendar.SECOND, seconds);
         return calendar.getTime();
     }
+
+    public static Date getNow() {
+
+        Calendar calendar = Calendar.getInstance();
+
+        return calendar.getTime();
+    }
+
 }
