@@ -1,7 +1,7 @@
 package com.github.codeinghelper.exception.http;
 
 /**
- * @author zeze.li
+ * @author frank
  * @version 1.0.0
  * @ClassName HttpException.java
  * @Description TODO

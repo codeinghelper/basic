@@ -3,7 +3,7 @@ package com.github.codeinghelper.response;
 import com.github.codeinghelper.exception.CreateSuccess;
 
 /**
- * @author zeze.li
+ * @author frank
  * @version 1.0.0
  * @ClassName UnifyResponse.java
  * @Description API返回类

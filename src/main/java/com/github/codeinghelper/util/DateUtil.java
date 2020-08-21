@@ -9,8 +9,7 @@ import java.util.TimeZone;
 
 /**
  * @BelongsProject: library
- * @BelongsPackage: com.github.lizeze.util
- * @Author: lizeze
+ * @Author: frank
  * @CreateTime: 2020-07-31 21:29
  * 源自 https://github.com/LJWLgl/CommonUtil/blob/master/src/main/java/io/github/ljwlgl/util/DateUtil.java
  * @Description: ${Description}

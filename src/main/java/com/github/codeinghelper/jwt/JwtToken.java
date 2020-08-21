@@ -11,7 +11,7 @@ import com.github.codeinghelper.util.StringUtil;
 import java.util.*;
 
 /**
- * @author ：lzz
+ * @author ：frank
  * @BelongsProject: com.github.codeinghelper.jwt
  * @date ：Created in 2020/8/13 11:29
  * @description ：

@@ -5,8 +5,7 @@ import java.util.UUID;
 
 /**
  * @BelongsProject: library
- * @BelongsPackage: com.github.lizeze.util
- * @Author: lizeze
+ * @Author: frank
  * @CreateTime: 2020-07-31 21:32
  * @Description: ${Description}
  */

@@ -6,7 +6,7 @@ import javax.validation.ConstraintValidatorContext;
 /**
  * @BelongsProject: test
  * @BelongsPackage: com.example.demo.validator
- * @Author: lizeze
+ * @Author: frank
  * @CreateTime: 2020-08-04 22:28
  * @Description: ${Description}
  */

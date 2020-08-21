@@ -7,8 +7,7 @@ import java.util.regex.Pattern;
 
 /**
  * @BelongsProject: library
- * @BelongsPackage: com.github.lizeze.util
- * @Author: lizeze
+ * @Author: frank
  * @CreateTime: 2020-08-08 09:29
  * 源自 https://github.com/LJWLgl/CommonUtil/blob/master/src/main/java/io/github/ljwlgl/util/RegexUtils.java
  * @Description: 正则工具类

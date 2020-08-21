@@ -12,8 +12,7 @@ import java.lang.reflect.Method;
 import java.util.Map;
 
 /**
- * @author ：lzz
- * @BelongsProject: com.github.lizeze.auth.validator
+ * @author ：frank
  * @date ：Created in 2020/8/7 9:11
  * @description ：
  * @modified By：

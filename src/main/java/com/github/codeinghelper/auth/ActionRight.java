@@ -3,8 +3,7 @@ package com.github.codeinghelper.auth;
 import java.lang.annotation.*;
 
 /**
- * @author ：lzz
- * @BelongsProject: com.github.lizeze.auth
+ * @author ：frank
  * @date ：Created in 2020/8/7 10:47
  * @description ：
  * @modified By：
