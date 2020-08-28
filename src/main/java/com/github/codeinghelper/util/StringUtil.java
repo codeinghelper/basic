@@ -93,7 +93,7 @@ public class StringUtil {
      * @return
      */
     public static String getUUID() {
-        return UUID.randomUUID().toString();
+        return UUID.randomUUID().toString().toLowerCase();
     }
 
     public static String replaceString(String str, String oldString, String newString) {
