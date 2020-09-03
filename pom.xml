@@ -8,18 +8,14 @@
     <url>https://github.com/codeinghelper/basic</url>
     <groupId>com.github.codeinghelper</groupId>
     <artifactId>basic</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
     <dependencies>
-        <dependency>
-            <groupId>com.auth0</groupId>
-            <artifactId>java-jwt</artifactId>
-            <version>3.8.1</version>
-        </dependency>
+
         <dependency>
             <optional>true</optional>
             <groupId>junit</groupId>
