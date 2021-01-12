@@ -43,7 +43,7 @@ public class GlobalExceptionAdvice {
         String requestUrl = req.getRequestURI();
         String method = req.getMethod();
         System.out.println(e);
-        UnifyResponse message = new UnifyResponse(9999, "服务器异常", method + " " + requestUrl);
+        UnifyResponse message = new UnifyResponse(9999, "服务器异常");
         return message;
     }
 
@@ -53,7 +53,7 @@ public class GlobalExceptionAdvice {
         String method = req.getMethod();
 
 //        ResponseEntity
-        UnifyResponse message = new UnifyResponse(e.getCode(), codeConfiguration.getMessage(e.getCode()), method + " " + requestUrl);
+        UnifyResponse message = new UnifyResponse(e.getCode(), codeConfiguration.getMessage(e.getCode()));
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
         HttpStatus httpStatus = HttpStatus.resolve(e.getHttpStatusCode());
@@ -72,7 +72,7 @@ public class GlobalExceptionAdvice {
         List<ObjectError> errors = e.getBindingResult().getAllErrors();
         String message = this.formatAllErrorMessages(errors);
 
-        return new UnifyResponse(10001, message, method + " " + requestUrl);
+        return new UnifyResponse(10001, message);
     }
 
     @ExceptionHandler(ConstraintViolationException.class)
@@ -83,7 +83,7 @@ public class GlobalExceptionAdvice {
         String method = req.getMethod();
         String message = e.getMessage();
 
-        return new UnifyResponse(40000, message, method + " " + requestUrl);
+        return new UnifyResponse(40000, message);
     }
 
     @ExceptionHandler(ParameterException.class)
@@ -94,7 +94,7 @@ public class GlobalExceptionAdvice {
         String method = req.getMethod();
         String message = e.getMessage();
 
-        return new UnifyResponse(e.getCode(), codeConfiguration.getMessage(e.getCode()), method + " " + requestUrl);
+        return new UnifyResponse(e.getCode(), codeConfiguration.getMessage(e.getCode()));
     }
 
 
@@ -106,7 +106,7 @@ public class GlobalExceptionAdvice {
         String method = req.getMethod();
         String message = e.getMessage();
 
-        return new UnifyResponse(e.getCode(), codeConfiguration.getMessage(e.getCode()), method + " " + requestUrl);
+        return new UnifyResponse(e.getCode(), codeConfiguration.getMessage(e.getCode()));
     }
 
     @ExceptionHandler(ForbiddenException.class)
@@ -117,7 +117,7 @@ public class GlobalExceptionAdvice {
         String method = req.getMethod();
 
 
-        return new UnifyResponse(e.getCode(), codeConfiguration.getMessage(e.getCode()), method + " " + requestUrl);
+        return new UnifyResponse(e.getCode(), codeConfiguration.getMessage(e.getCode()));
     }
 
     private String formatAllErrorMessages(List<ObjectError> errors) {

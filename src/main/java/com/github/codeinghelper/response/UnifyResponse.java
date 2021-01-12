@@ -2,6 +2,8 @@ package com.github.codeinghelper.response;
 
 import com.github.codeinghelper.exception.CreateSuccess;
 
+import java.util.Date;
+
 /**
  * @author frank
  * @version 1.0.0
@@ -9,51 +11,47 @@ import com.github.codeinghelper.exception.CreateSuccess;
  * @Description API返回类
  * @createTime 2020年08月01日 18:35:00
  */
-public class UnifyResponse {
-    private int code;
-    private String message;
-    private Object data;
-    private String request;
+public class UnifyResponse<T> {
+    private Date createTime;
+    private T data;
+    private ErrorCode errorCode;
 
-    public UnifyResponse(int code, String message, String request) {
-        this.code = code;
-        this.message = message;
-        this.request = request;
+    public UnifyResponse(T data) {
+        this.data = data;
+        this.createTime = new Date();
+        this.errorCode = new ErrorCode(0, "成功");
     }
 
-    public static void createSuccess(int code) {
-        throw new CreateSuccess(code);
+    public UnifyResponse(Integer code, String message) {
+
+        this.createTime = new Date();
+        this.errorCode = new ErrorCode(code, message);
     }
 
-    public int getCode() {
-        return code;
+    public UnifyResponse() {
     }
 
-    public void setCode(int code) {
-        this.code = code;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public String getMessage() {
-        return message;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public Object getData() {
+    public T getData() {
         return data;
     }
 
-    public void setData(Object data) {
+    public void setData(T data) {
         this.data = data;
     }
 
-    public String getRequest() {
-        return request;
+    public ErrorCode getErrorCode() {
+        return errorCode;
     }
 
-    public void setRequest(String request) {
-        this.request = request;
+    public void setErrorCode(ErrorCode errorCode) {
+        this.errorCode = errorCode;
     }
 }
